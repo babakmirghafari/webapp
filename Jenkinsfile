@@ -5,7 +5,6 @@ pipeline {
     stage('Npm and Angular Version') {
                         steps {
                             sh 'npm --version'
-                            sh 'ng -version'
                         }
                     }
         stage('Build') {
