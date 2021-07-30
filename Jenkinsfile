@@ -8,12 +8,19 @@ pipeline {
                             sh 'ng --version'
                         }
                     }
-        stage('Build') {
+        stage('Install') {
                     steps {
-                        sh 'npm run build'
-                        echo '***************************Build Successfully'
+                        sh 'npm cache clean --force'
+                        sh 'npm install'
+                        echo '***************************Install Successfully'
                     }
                 }
+      stage('Build') {
+                          steps {
+                              sh 'npm build'
+                              echo '***************************Install Successfully'
+                          }
+                      }
         stage('Test') {
             steps {
                 sh 'npm run test'
@@ -22,7 +29,6 @@ pipeline {
         }
         stage('Deploy') {
                     steps {
-
                         echo 'Deploy ended Successfully'
                     }
                 }
