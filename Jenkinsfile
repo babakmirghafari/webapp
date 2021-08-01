@@ -14,8 +14,6 @@ pipeline {
                   echo " =========== ^^^^^^^^^^^^ Reading config from pipeline script "
                   sh "cat ${env.npm_config_registry}"
                   sh "npm config ls"
-                  sh "npm config rm proxy"
-                  sh "npm config rm https-proxy"
                   sh "npm install"
                  }
               }
