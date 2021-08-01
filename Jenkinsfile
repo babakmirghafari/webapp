@@ -10,9 +10,13 @@ pipeline {
                     }
         stage('Install') {
                     steps {
-                        sh 'npm cache clean --force'
-                        sh 'npm install'
-                        echo '***************************Install Successfully'
+                    withNPM(npmrcConfig: 'npmrc') {
+                                    sh 'npm cache clean --force'
+                                    sh "npm config ls"
+                                    sh "npm install"
+                                    sh "ng build"
+                                    echo '***************************Install Successfully'
+                              }
                     }
                 }
       stage('Build') {
