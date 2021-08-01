@@ -10,27 +10,11 @@ pipeline {
                     }
     stage('Install') {
                          steps {
-                             sh 'npm cache clean --force'
-                             sh "npm install"
-                             cho '***************************Install Successfully'
+                             configFileProvider([configFile(fileId: '8403d3fe-8951-4292-b233-187a5483ce04', variable: 'npm_config_registry')]) {
+                                         echo " =========== ^^^^^^^^^^^^ Reading config from pipeline script "
+                                         sh "cat ${env.npm_config_registry}"
+                                         echo " =========== ~~~~~~~~~~~~ ============ "
+                                     }
                     }
                 }
-      stage('Build') {
-                          steps {
-                              sh 'npm build'
-                              echo '***************************Build Successfully'
-                          }
-                      }
-        stage('Test') {
-            steps {
-                sh 'npm run test'
-                echo '********************************Test Successfully'
-            }
-        }
-        stage('Deploy') {
-                    steps {
-                        echo 'Deploy ended Successfully'
-                    }
-                }
-    }
 }
