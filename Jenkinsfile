@@ -13,7 +13,7 @@ pipeline {
                   configFileProvider([configFile(fileId: '8403d3fe-8951-4292-b233-187a5483ce04', variable: 'npm_config_registry')]) {
                   echo " =========== ^^^^^^^^^^^^ Reading config from pipeline script "
                   sh "cat ${env.npm_config_registry}"
-                  echo " =========== ~~~~~~~~~~~~ ============ "
+                  sh "npm install"
                  }
               }
            }
