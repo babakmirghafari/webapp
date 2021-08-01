@@ -14,6 +14,7 @@ pipeline {
                   echo " =========== ^^^^^^^^^^^^ Reading config from pipeline script "
                   sh "cat ${env.npm_config_registry}"
                   sh "npm config ls"
+                  sh "npm cache clear --force"
                   sh "npm install"
                  }
               }
