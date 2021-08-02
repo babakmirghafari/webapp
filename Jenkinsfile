@@ -22,7 +22,9 @@ pipeline {
         stage ('Build'){
                 steps{
                        sh "npm run build"
-                       sh "docker build -t webapp:0.0.1"
+                       script {
+                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                       }
                 }
         }
     }
